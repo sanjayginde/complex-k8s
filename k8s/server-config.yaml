@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: sanjayginde/multi-docker-server
+          image: sanjayginde/complex-k8s-server
           ports:
             - containerPort: 5000
           env:

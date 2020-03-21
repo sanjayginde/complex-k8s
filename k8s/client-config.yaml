@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: sanjayginde/multi-docker-client
+          image: sanjayginde/complex-k8s-client
           ports:
             - containerPort: 3000
 ---
