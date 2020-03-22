@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: sanjayginde-dev-tls
+spec:
+  secretName: sanjayginde-dev
+  issuerRef:
+    name: letsecnrypt-prod
+    kind: ClusterIssuer
+  commonName: sanjayginde.dev
+  dnsNames:
+    - sanjayginde.dev
+    - www.sanjayginde.dev
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - sanjayginde.dev
+          - www.sanjayginde.dev
