@@ -5,7 +5,7 @@ metadata:
 spec:
   secretName: sanjayginde-dev
   issuerRef:
-    name: letsecnrypt-prod
+    name: letsencrypt-prod
     kind: ClusterIssuer
   commonName: sanjayginde.dev
   dnsNames:
