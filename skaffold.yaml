@@ -1,0 +1,40 @@
+apiVersion: skaffold/v2beta1
+kind: Config
+build:
+  local:
+    push: false
+  artifacts:
+    - image: sanjayginde/complex-k8s-client
+      context: client
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: '**/*.css'
+            dest: .
+          - src: '**/*.html'
+            dest: .
+          - src: '**/*.js'
+            dest: .
+    - image: sanjayginde/complex-k8s-server
+      context: server
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+    - image: sanjayginde/complex-k8s-worker
+      context: worker
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+deploy:
+  kubectl:
+    manifests:
+      - k8s/client-config.yaml
+      - k8s/server-config.yaml
+      - k8s/worker-config.yaml
